@@ -34,6 +34,7 @@ In order for your modules to be reloaded and the live instances to be updated yo
  
  class MyClass(livecoding.LiveObject):
    instances = []
+   
    def __init__(self):
      super().__init__()
  ```
@@ -41,6 +42,7 @@ In order for your modules to be reloaded and the live instances to be updated yo
  ```python
  class MyClass:
    instances = []
+   
    def __init__(self):
      instances.append(self)
  ```
