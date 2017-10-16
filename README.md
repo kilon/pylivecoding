@@ -30,6 +30,8 @@ In order for your modules to be reloaded and the live instances to be updated yo
  - All the classes will have to be either a) subclasses of livecoding.LiveObject or b) do what LiveObject does, define a class variable named "instances" and in the __init__ add the instance to the variable 
  so (a) will look like this
  ```python
+ import pylivecoding
+ 
  class MyClass(livecoding.LiveObject):
    instances = []
    def __init__(self):
@@ -40,7 +42,7 @@ In order for your modules to be reloaded and the live instances to be updated yo
  class MyClass:
    instances = []
    def __init__(self):
-     instances.apped(self)
+     instances.append(self)
  ```
  Thats all you have to do and you can code as you awlays code following whatever style you want. 
  
