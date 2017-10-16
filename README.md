@@ -2,7 +2,7 @@
 # pylivecoding
 Pylivecoding is a live coding environment implementation inspired by Smalltalk
 
-Essentially this library reloads modules and updates all live instances of classes defined in those modules to the latest code of the class definition without losing anny of the data. This way you can change code in your favorite code editor and IDE and immediately see the results without any delays. 
+Essentially this library reloads modules and updates all live instances of classes defined in those modules to the latest code of the class definition without losing any of the data/state. This way you can change code in your favorite code editor and IDE and immediately see the results without any delays. 
 
 # How to use
 
@@ -43,5 +43,14 @@ In order for your modules to be reloaded and the live instances to be updated yo
      instances.apped(self)
  ```
  Thats all you have to do and you can code as you awlays code following whatever style you want. 
+ 
+ # Future plans
+ The library is far from finished. The Smalltalk enviroment comes with a wealth of conveniences and automations and a very powerful IDE. Generally Python is powerful enough to do those things and there are good enough IDEs out there but I will be replication some of the ideas. So to do list is the following
+ 
+ [] Make the library smart enough to detect changes inside modules and automatically update the live code/state
+ [] lift the restriction on imports
+ [] automatically wrap classes to track their instances
+ [] make the module list optional 
+ 
 
 
