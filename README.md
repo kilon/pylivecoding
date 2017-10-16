@@ -47,13 +47,13 @@ In order for your modules to be reloaded and the live instances to be updated yo
  # Future plans
  The library is far from finished. The Smalltalk enviroment comes with a wealth of conveniences and automations and a very powerful IDE. Generally Python is powerful enough to do those things and there are good enough IDEs out there but I will be replication some of the ideas. So to do list is the following
  
- -[] Make the library smart enough to detect changes inside modules and automatically update the live code/state
+ -[x] Make the library smart enough to detect changes inside modules and automatically update the live code/state
  
- -[] lift the restriction on imports
+ -[x] lift the restriction on imports
  
- -[] automatically wrap classes to track their instances
+ -[x] automatically wrap classes to track their instances
  
- -[] make the module list optional 
+ -[x] make the module list optional 
  
 
 
