@@ -67,6 +67,13 @@ except Exception as inst:
  
 The assumption here is that all this runs inside a loop of some sort so you can actually see the results of the updated code. Obviously if it is not and this is the last line of code , the application will just end  end execution after the debugger was instructed to continue with the "c" command ;) 
 
+# The actual benefits of live coding
+Technically speaking you can even use your source code editor as a debugger the reason being because of live coding you can print real time whatever value you want, inspect and even modify existing objects and generally do all the things you want even create your own breakpoints using if condition that will stop the execution if specific criteria are not met. Also you wont have the bigest disadvantage of a debugger , its inability to change the source code. 
+
+Obviously this works great with Test Driven Development because the ability to lively manipulate tests making writting tests far easier. Live coding empowers the users with the ease needed to constantly experiment with code and it makes the whole experience far more enjoyable and productive.
+
+live coding make repls also uneccessary for the same reason. 
+
  # Future plans
  The library is far from finished. The Smalltalk enviroment comes with a wealth of conveniences and automations and a very powerful IDE. Generally Python is powerful enough to do those things and there are good enough IDEs out there but I will be replication some of the ideas. So to do list is the following
  
