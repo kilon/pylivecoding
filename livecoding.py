@@ -4,7 +4,7 @@ def private():
     from importlib import reload
 
     # this is the environment registry that tracks live modules and associate live classes
-    registry = {} # { module: { name: LiveObject }
+    registry = {} # { module: { name: LiveObject } }
     class LiveObjectConstructor(type):
         def __new__(meta, name, bases, NS):
             live_classes = registry.setdefault( NS['__module__'], {} ) # set and/or retrieve
