@@ -55,5 +55,4 @@ live coding make repls also uneccessary for the same reason.
 The library is far from finished. The Smalltalk enviroment comes with a wealth of conveniences and automations and a very powerful IDE. Generally Python is powerful enough to do those things and there are good enough IDEs out there but I will be replicating some of the ideas to make my life easier. So to do list is the following
  
  - Make the library smart enough to detect changes inside modules and automatically update the live code/state
- - Use weak refernces to allow class to track of its instances. This is important because the current method will keep instances in memory because they are referenced by the class. A weak reference on the other hand is ignored by the garbage collector and if an object only reference is weak, its deleted from memory. 
  
