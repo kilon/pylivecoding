@@ -1,54 +1,30 @@
-import importlib,pdb,sys,traceback
-from IPython import embed as e
 
-class LiveEnviroment:
-    def __init__(self):
-        self.live_modules=[]
-        self._live_classes={}
+def private():
+    from sys import modules
+    from importlib import reload
 
+    # this is the environment registry that tracks live modules and associate live classes
+    registry = {} # { module: { name: LiveObject }
+    class LiveObjectConstructor(type):
+        def __new__(meta, name, bases, NS):
+            live_classes = registry.setdefault( NS['__module__'], {} ) # set and/or retrieve
+            old_live_class = live_classes.get( name, None ) # return if exists
+            NS['__class__'] = property(lambda self: live_classes[name]) # old instance returns new class
+            new_live_class = live_classes[name] = type.__new__(meta,name,bases,NS) # update on reload()
+            return new_live_class
 
-    def register_module(self,name):
-        if name in self.live_modules:
-            raise ValueError("Error: a module with same name already registered")
-        else:
-            self.live_modules.append(name)
+    class LiveObject(object, metaclass=LiveObjectConstructor):
+        __slots__ = []
 
-    @property
-    def live_classes(self):
-        return self._live_classes
+    def update_environment(): # TODO: detect updates automatically
+        for live_module, live_classes in registry.items():
+            mod = modules[live_module]
+            reload( mod )
+            moddict = mod.__dict__
+            for k in live_classes: # search for removed classes
+                if k not in moddict: live_classes.pop(k)
+        
+    return LiveObject, update_environment # make these public
 
-    def update_live_classes(self):
-        live_classes = {}
-        for module in self.live_modules:
-            live_classes[module] = []
-            for old_obj in sys.modules[module].__dict__.values():
-                if old_obj.__class__.__name__ == 'type':
-                    live_classes[module].append(old_obj)
-        self._live_classes = live_classes
-        return live_classes
-
-    def update(self):
-        self.update_live_classes()
-        for live_module in self.live_classes:
-            #pdb.set_trace()
-            new_live_class = 0
-            live_classes_ids = [id(cl) for cl in self.live_classes[live_module]]
-            importlib.reload(sys.modules[live_module])
-            live_classes_ids = [id(cl) for cl in self.live_classes[live_module]]
-
-            for live_class in self.live_classes[live_module]:
-                new_live_class = eval("sys.modules[live_module]." + live_class.__name__)
-
-                for live_instance in live_class.instances:
-                    backup_instances = live_instance.__class__.instances
-                    live_instance.__class__ = new_live_class
-                    live_instance.__class__.instances = backup_instances
-                    live_instance = 0
-
-class LiveObject:
-    instances=[]
-    def __init__(self):
-        if self.__class__.instances is []:
-            self.__class__.instances.append(self)
-        else:
-            self.__class__.instances=[self]
+LiveObject, update_env = private()
+del private # prevent private access
