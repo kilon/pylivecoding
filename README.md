@@ -11,6 +11,19 @@ First of course you import the single module pylovecoding.py to your project.
 ```python
 import livecoding
 ```
+Then you need to initialize the live coding enviroment and add to it the modules which will have their code be reloaded
+
+```py
+live_env = livecoding.LiveEnviroment()
+live_env.live_modules = ['myproject.module1', 'myproject.module2', 'myproject.module3']
+live_env.update()
+```
+Cyclops in this case is the name of our project in case you use it as a python package. So you must replace ```package``` witht the name of your package and ```module1`` etc with the name of your module. A package means its a folder that containes \_\_init\_\_.py if you dont use python packages then it should look like this
+```py
+live_env = livecoding.LiveEnviroment()
+live_env.live_modules = [module1', 'module2', 'module3']
+live_env.update()
+```
 In order for your modules to be reloaded and the live instances to be updated you have to issue the update command
 ```python
 livecoding.update_env()
