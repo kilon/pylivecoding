@@ -2,7 +2,7 @@
 # pylivecoding
 Pylivecoding is a live coding environment implementation inspired by Smalltalk
 
-Essentially this library reloads modules and updates all live instances of classes defined in those modules to the latest code of the class definition without losing any of the data/state. This way you can change code in your favorite code editor and IDE and immediately see the results without any delays. 
+Essentially this library reloads modules and updates all live instances of classes defined in those modules to the latest code of the class definition without losing any of the data/state. This way you can change code in your favorite code editor and IDE and immediately see the results without any delays afer you save the module. 
 
 # How to use
 First please not that this library needs CPython 3.5 and above. It won't work with Python 2. 
@@ -26,7 +26,7 @@ live_env = livecoding.LiveEnviroment()
 live_env.live_modules = ['myproject.module1', 'myproject.module2', 'myproject.module3']
 live_env.update()
 ```
-Cyclops in this case is the name of our project in case you use it as a python package. So you must replace ```package``` witht the name of your package and ```module1`` etc with the name of your module. A package means its a folder that containes \_\_init\_\_.py if you dont use python packages then it should look like this
+Cyclops in this case is the name of our project in case you use it as a python package. So you must replace ```package``` witht the name of your package and ```module1``` etc with the name of your module. A package means its a folder that containes \_\_init\_\_.py if you dont use python packages then it should look like this
 ```py
 live_env = livecoding.LiveEnviroment()
 live_env.live_modules = [module1', 'module2', 'module3']
@@ -44,6 +44,8 @@ import livecoding
 
 class MyClass(livecoding.LiveObject):
 ```
+If you dont want to subclass LiveObject then all you have to do is take a look at that close and try to add similar functionality to your class. Which means your class must have a class variable called ```instances``` and that each time an instance is created that instance is added to that variable. 
+
 Thats all you have to do and you can code as you awlays code following whatever style you want. 
 # Debugging live coding 
 Traditional debugging compared to live code debugging is like fire compared to nucleal power. Because not only you see the problems in your source code you can change the live code while still the debugger is stepping through your code. This allows coding Smalltalk style. In Smalltalk some coders code entirely inside the debugger, they make intential mistakes under the safety that they can correct their errors with no delays at all because there is no need to restard the debugger and each new error triggers the debugger again.When the error is fixed via live coding, the breakpoint can be removed and the debugger instructed to continue execution like nothing happened. 
