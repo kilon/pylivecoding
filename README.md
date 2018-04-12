@@ -44,7 +44,9 @@ import livecoding
 
 class MyClass(livecoding.LiveObject):
 ```
-If you dont want to subclass LiveObject then all you have to do is take a look at that close and try to add similar functionality to your class. Which means your class must have a class variable called ```instances``` and that each time an instance is created that instance is added to that variable. 
+If you dont want to subclass LiveObject then all you have to do is take a look at that class and try to add similar functionality to your class. Which means your class must have a class variable called ```instances``` and that each time an instance is created that instance is added to that variable. For example
+
+
 
 Thats all you have to do and you can code as you awlays code following whatever style you want. 
 # Debugging live coding 
