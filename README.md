@@ -45,9 +45,14 @@ import livecoding
 class MyClass(livecoding.LiveObject):
 ```
 If you dont want to subclass LiveObject then all you have to do is take a look at that class and try to add similar functionality to your class. Which means your class must have a class variable called ```instances``` and that each time an instance is created that instance is added to that variable. For example
+```py
+class MyLiveObjectClass:
+    instances=[]
 
+    def __init__(self):
+            self.__class__.instances.append(self)
 
-
+```
 Thats all you have to do and you can code as you awlays code following whatever style you want. 
 # Debugging live coding 
 Traditional debugging compared to live code debugging is like fire compared to nucleal power. Because not only you see the problems in your source code you can change the live code while still the debugger is stepping through your code. This allows coding Smalltalk style. In Smalltalk some coders code entirely inside the debugger, they make intential mistakes under the safety that they can correct their errors with no delays at all because there is no need to restard the debugger and each new error triggers the debugger again.When the error is fixed via live coding, the breakpoint can be removed and the debugger instructed to continue execution like nothing happened. 
