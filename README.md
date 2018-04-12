@@ -55,7 +55,7 @@ class MyLiveObjectClass:
 ```
 Thats all you have to do and you can code as you awlays code following whatever style you want. 
 # Debugging live coding 
-Traditional debugging compared to live code debugging is like fire compared to nucleal power. Because not only you see the problems in your source code you can change the live code while still the debugger is stepping through your code. This allows coding Smalltalk style. In Smalltalk some coders code entirely inside the debugger, they make intential mistakes under the safety that they can correct their errors with no delays at all because there is no need to restard the debugger and each new error triggers the debugger again.When the error is fixed via live coding, the breakpoint can be removed and the debugger instructed to continue execution like nothing happened. 
+Traditional debugging compared to live code debugging is like fire compared to nucleal power. Because not only you see the problems in your source code you can also change the live code while still the debugger is stepping through your code. This allows coding Smalltalk style. In Smalltalk some coders code entirely inside the debugger, they make intentional mistakes under the safety that they can correct their errors with no delays at all because there is no need to restart the debugger and each new error triggers the debugger again.When the error is fixed via live coding, the breakpoint can be removed and the debugger instructed to continue execution like nothing happened. 
  
 Fortunately python does provide such functionality through the use of post mortem debugging. Essentially it means that in the case of error the debugger triggers using the line that triggered the error as a temporary breakpoint. The code is the following
  
@@ -70,16 +70,16 @@ except Exception as inst:
   pdb.post_mortem(tb)
 ```
  
-As you can see we have here a usual exception handling code, inside the try we first live update our code to make sure it updated to the latest source code and execute our code , if an error occur or anyting else, it is stored and printed and then the debugger is triggered , hitting c inside pdb will continue execution first statement being updating to live code. 
+As you can see we have here a usual python exception handling code, inside the try we first live update our code to make sure it updated to the latest source code and execute our code , if an error occur or anyting else, it is stored and printed and then the debugger is triggered , hitting c inside pdb will continue execution with the first statement being updating to live code. 
  
 The assumption here is that all this runs inside a loop of some sort so you can actually see the results of the updated code. Obviously if it is not and this is the last line of code , the application will just end  end execution after the debugger was instructed to continue with the "c" command ;) 
 
 # The actual benefits of live coding
-Technically speaking you can even use your source code editor as a debugger the reason being because of live coding you can print real time whatever value you want, inspect and even modify existing objects and generally do all the things you want even create your own breakpoints using if condition that will stop the execution if specific criteria are not met. Also you wont have the bigest disadvantage of a debugger , its inability to change the source code. 
+Technically speaking you can even use your source code editor as a debugger the reason being because of live coding you can print real time whatever value you want, inspect and even modify existing objects and generally do all the things you want even create your own breakpoints using if conditions that will stop the execution if specific criteria are met. Also you wont have the bigest disadvantage of a debugger , its inability to change the source code. 
 
-Obviously this works great with Test Driven Development because the ability to lively manipulate tests making writting tests far easier. Live coding empowers the users with the ease needed to constantly experiment with code and it makes the whole experience far more enjoyable and productive.
+Obviously this works great with Test Driven Development because the ability to lively manipulate tests maks writting tests far easier. Live coding empowers the users with the ease needed to constantly experiment with code and it makes the whole experience far more enjoyable and productive.
 
-live coding make repls also uneccessary for the same reason. 
+live coding make REPLs also uneccessary for the same reason. Through live coding, your source code turns to essentially a REPL on steroids.
 
 # Future plans
 The library is far from finished. The Smalltalk enviroment comes with a wealth of conveniences and automations and a very powerful IDE. Generally Python is powerful enough to do those things and there are good enough IDEs out there but I will be replicating some of the ideas to make my life easier. So to do list is the following
