@@ -5,14 +5,22 @@ Pylivecoding is a live coding environment implementation inspired by Smalltalk
 Essentially this library reloads modules and updates all live instances of classes defined in those modules to the latest code of the class definition without losing any of the data/state. This way you can change code in your favorite code editor and IDE and immediately see the results without any delays. 
 
 # How to use
+First please not that this library needs CPython 3.5 and above. It won't work with Python 2. 
 
 Pylivecoding is an extremely small library and its functionality is super simple. 
 First of course you import the single module pylovecoding.py to your project. 
 ```python
 import livecoding
 ```
+if the folder that contains your main module that will reload the other modules is \_\_init\_\_.py then the import must be
+```py
+from . import livecoding
+```
+if it is a subpackage then the import must be
+```py
+from .. import livecoding
+```
 Then you need to initialize the live coding enviroment and add to it the modules which will have their code be reloaded
-
 ```py
 live_env = livecoding.LiveEnviroment()
 live_env.live_modules = ['myproject.module1', 'myproject.module2', 'myproject.module3']
