@@ -29,6 +29,8 @@ class LiveEnviroment(LiveObject):
         live_classes = {}
         for module in self.live_modules:
             live_classes[module] = []
+            if hasattr(sys.modules[module],"live_enviroment"):
+                sys.modules[module].live_enviroment.update()
             for old_obj in sys.modules[module].__dict__.values():
                 if old_obj.__class__.__name__ == 'type' and hasattr(old_obj.__class__,"instances"):
                     live_classes[module].append(old_obj)
