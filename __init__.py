@@ -7,7 +7,7 @@ class LiveObject:
             self.__class__.instances.append(self)
 
 
-class LiveEnviroment(LiveObject):
+class LiveEnvironment(LiveObject):
     instances = []
     def __init__(self):
         super().__init__()
