@@ -142,6 +142,7 @@ setup(
     # projects.
     extras_require={
     },
+    python_requires='>=3',
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.
@@ -180,6 +181,6 @@ setup(
     # issues, where the source is hosted, where to say thanks to the package
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
-    project_urls={  
+    project_urls={
     },
 )
